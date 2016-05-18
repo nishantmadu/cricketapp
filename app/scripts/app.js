@@ -4,11 +4,13 @@ angularApp.config(function ($routeProvider) {
   $routeProvider
   .when ('/', {
     templateUrl: 'app/templates/main.html',
-    controller: 'HomeController'
+    controller: 'HomeController',
+    controllerAs: 'vh'
   })
-  .when ('/matchdetails', {
-    templateUrl: 'details.html',
-    controller: 'DetailsController'
+  .when ('/matchdetails/:uniqId', {
+    templateUrl: 'app/templates/details.html',
+    controller: 'DetailsController',
+    controllerAs: 'dc'
   })
 });
 
@@ -17,6 +19,15 @@ angularApp.controller("HomeController",['$resource','$filter',function($resource
   var vm=this;
     var cricketResource = $resource('http://cricapi.com/api/cricket');
     vm.cricketResponse = cricketResource.get();
-    console.log(vm.cricketResponse);
+  
+}]);
+
+angularApp.controller("DetailsController",['$resource','$filter','$routeParams',
+function($resource,$filter,$routeParams){
+    var vm=this;
+    var id = $routeParams.uniqId;
+    var cricDetails = $resource('http://cricapi.com/api/cricketScore',{unique_id:id});
+    vm.cricResponse = cricDetails.get();
+
 
 }]);

@@ -1,22 +1,20 @@
-<h1>Hello!</h1>
 
 <div class="container-fluid header text-center">
   <h3>Cricket App</h3>
 </div>
-<div class ="row" ng-controller="HomeController as vh">
+<div class ="row">
   <div class="col-md-6 col-md-offset-3" id="result">
     <table class="table table-striped table-hover ">
       <thead>
         <tr>
           <th>Description</th>
-          <th>Tiltle</th>
+          <th>Title</th>
         </tr>
       </thead>
       <tbody>
       <tr ng-repeat = "n in vh.cricketResponse.data">
-        <th><a href="#">{{n.description}}</a></th>
-        <th><a href="#">{{n.title}}</a></th>
-        <a href="#" ng-click=""</a>
+        <th><a href="#/matchdetails/{{n.unique_id}}"  >{{n.description}}</a></th>
+        <th><a href="#/matchdetails/{{n.unique_id}}" ng-click="" >{{n.title}}</a></th>
       </tr>
       </tbody>
     </table>

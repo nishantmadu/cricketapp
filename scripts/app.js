@@ -3,12 +3,12 @@ var angularApp = angular.module('cricketApp', ['ngResource','ngRoute']);
 angularApp.config(function ($routeProvider) {
   $routeProvider
   .when ('/', {
-    templateUrl: 'app/templates/main.html',
+    templateUrl: 'templates/main.html',
     controller: 'HomeController',
     controllerAs: 'vh'
   })
   .when ('/matchdetails/:uniqId', {
-    templateUrl: 'app/templates/details.html',
+    templateUrl: 'templates/details.html',
     controller: 'DetailsController',
     controllerAs: 'dc'
   })
@@ -19,7 +19,7 @@ angularApp.controller("HomeController",['$resource','$filter',function($resource
   var vm=this;
     var cricketResource = $resource('http://cricapi.com/api/cricket');
     vm.cricketResponse = cricketResource.get();
-  
+
 }]);
 
 angularApp.controller("DetailsController",['$resource','$filter','$routeParams',
